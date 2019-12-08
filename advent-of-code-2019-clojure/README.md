@@ -1,4 +1,4 @@
-# advent-of-code-2019-clojure-lein
+# advent-of-code-2019
 
 A Clojure library designed to ... well, that part is up to you.
 
