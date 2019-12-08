@@ -1,5 +1,5 @@
-(ns day-01-part-2
-  (:require [rocket-module :refer :all]))
+(ns advent-of-code-2019.day-01-part-2
+  (:require [advent-of-code-2019.rocket-module :refer :all]))
 
 (defn calculate-total-fuel [mass]
   (if (<= mass 0)
@@ -10,4 +10,4 @@
 
 (def total-fuel (reduce + module-fuels))
 
-(println "total fuel" total-fuel)
+;(println "total fuel" total-fuel)
