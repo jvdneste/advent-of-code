@@ -1,8 +1,9 @@
 (ns day-01
   (:require [rocket-module :refer :all]))
 
-(def module-fuels (map #(- (quot % 3) 2) module-masses))
+(def module-fuels (map needed-fuel module-masses))
 
 (def total-fuel (reduce + module-fuels))
 
-(print total-fuel)
+(println "total mass" (reduce + module-masses))
+(println "total fuel" total-fuel)
