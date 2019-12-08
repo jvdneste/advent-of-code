@@ -1,6 +1,4 @@
-(ns advent-of-code-2019.core)
+(ns advent-of-code-2019.core
+  (:require [advent-of-code-2019.day-02 :refer :all]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+;(println (program-eval program-values))

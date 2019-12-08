@@ -3,4 +3,5 @@
   (:require [advent-of-code-2019.day-01-part-1 :refer :all]))
 
 (deftest total-fuel-is-correct
-  (is (= total-fuel 3266516)))
+  (testing "is total fuel correct"
+    (is (= 3266516 (calc-total-fuel)))))

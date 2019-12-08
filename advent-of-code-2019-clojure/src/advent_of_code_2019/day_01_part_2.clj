@@ -1,13 +1,13 @@
 (ns advent-of-code-2019.day-01-part-2
-  (:require [advent-of-code-2019.rocket-module :refer :all]))
+  (:require [advent-of-code-2019.day-01-part-1 :refer [needed-fuel module-masses]]))
 
-(defn calculate-total-fuel [mass]
+(defn needed-fuel-recur [mass]
   (if (<= mass 0)
     0
-    (+ mass (calculate-total-fuel (needed-fuel mass)))))
+    (+ mass (needed-fuel-recur (needed-fuel mass)))))
 
-(def module-fuels (map #(calculate-total-fuel (needed-fuel %)) module-masses))
+(defn needed-fuels [masses] (map #(needed-fuel-recur (needed-fuel %)) masses))
 
-(def total-fuel (reduce + module-fuels))
+(defn total-needed-fuel [] (reduce + (needed-fuels module-masses)))
 
-;(println "total fuel" total-fuel)
+;(println "total fuel" (total-needed-fuel))
