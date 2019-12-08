@@ -1,4 +1,4 @@
-(ns day-01
+(ns day-01-part-1
   (:require [rocket-module :refer :all]))
 
 (def module-fuels (map needed-fuel module-masses))

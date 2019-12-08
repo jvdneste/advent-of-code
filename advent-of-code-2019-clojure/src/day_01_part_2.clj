@@ -1,4 +1,4 @@
-(ns day-02
+(ns day-01-part-2
   (:require [rocket-module :refer :all]))
 
 (defn calculate-total-fuel [mass]
