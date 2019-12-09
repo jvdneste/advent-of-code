@@ -42,13 +42,15 @@
 
 (def central (Point. 0 0))
 
-(defn wire-points [steps]
+(defrecord Segment [point step])
+
+(defn wire-segments [steps]
   (loop [acc [] point central steps steps]
     (if (empty? steps)
       acc
       (let [step (first steps)]
         (let [new-point (move point step)]
-          (recur (conj acc new-point) new-point (rest steps)))))))
+          (recur (conj acc (Segment. point step)) new-point (rest steps)))))))
 
 (println "parsed" (parse-steps wire-text-1))
-(println "points" (wire-points (parse-steps wire-text-1)))
+(println "points" (wire-segments (parse-steps wire-text-1)))
