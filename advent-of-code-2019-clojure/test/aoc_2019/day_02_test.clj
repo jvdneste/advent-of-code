@@ -1,6 +1,6 @@
-(ns advent-of-code-2019.day-02-test
+(ns aoc-2019.day-02-test
   (:require [clojure.test :refer :all])
-  (:require [advent-of-code-2019.day-02 :refer :all]))
+  (:require [aoc-2019.day-02 :refer :all]))
 
 (deftest program-eval-at-position-tests
   (testing "program-eval-at-position basic tests"
