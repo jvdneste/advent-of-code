@@ -42,10 +42,10 @@
 (defn create-segment-with [point axis value translation-value]
   [ (Segment. (assoc point axis value) (Translation. axis translation-value)) ])
 
-(defn split-segment [segment]create
+(defn split-segment [segment]
   "rewrite a segment to point away from the center, breaking it up in 2 if it crosses the x or y axis"
-  (let [{p :point t :translation} segment]
-    (let [p-value (nth p axis) {t-value :value axis :axis} t]
+  (let [{p :point {t-value :value axis :axis} :translation} segment]
+    (let [p-value (nth p axis)]
       (let [translated (+ p-value t-value)]
         (cond
           (zero? p-value) [ segment ]
@@ -61,5 +61,5 @@
                     (split-segment-do p axis p-value translated)
                     (create-segment-with p axis translated (- t-value)))))))))
 
-(println "parsed" (parse-wire wire-text-1))
-(println "points" (wire-segments (parse-wire wire-text-1)))
+;(println "parsed" (parse-wire wire-text-1))
+;(println "points" (wire-segments (parse-wire wire-text-1)))
