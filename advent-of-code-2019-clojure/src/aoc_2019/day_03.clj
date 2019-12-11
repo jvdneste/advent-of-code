@@ -35,26 +35,31 @@
   (let [init (Segment. center (first steps))]
     (reductions #(Segment. (translate (:point %1) (:translation %1)) %2) init (rest steps))))
 
-(defn split-segment [axis segment]
-  (let [{point :point translation :translation} segment]
-    (let [p (nth axis point) t (nth axis translation)]
-      (if (> (Math/abs t) (Math/abs p))
-        (if (and (neg? p) (pos? t))
-          []
-          (if (and (pos? p) (neg? t))
-            []
-            segment))
-        segment))))
+(defn split-segment-do [point axis translation-value-1 translation-value-2]
+  [(Segment. (assoc point axis 0) (Translation. axis translation-value-1))
+   (Segment. (assoc point axis 0) (Translation. axis translation-value-2))])
 
-(defn normalize-segment [segment]
+(defn create-segment-with [point axis value translation-value]
+  [ (Segment. (assoc point axis value) (Translation. axis translation-value)) ])
+
+(defn split-segment [segment]create
   "rewrite a segment to point away from the center, breaking it up in 2 if it crosses the x or y axis"
-  (let [{[_ yt] :translation} segment]
-    (if (zero? yt)
-      (split-segment 0 segment)
-      (split-segment 1 segment))))
-
-(defn normalize-segments [segments]
-  (mapcat normalize-segment segments))
+  (let [{p :point t :translation} segment]
+    (let [p-value (nth p axis) {t-value :value axis :axis} t]
+      (let [translated (+ p-value t-value)]
+        (cond
+          (zero? p-value) [ segment ]
+          (neg? p-value)
+            (if (or (zero? t-value) (neg? t-value))
+              [segment]
+              (if (> translated 0)
+                (split-segment-do p axis p-value translated)
+                (create-segment-with p axis translated (- t-value)))) ; reverse it
+          :else (if (or (zero? t-value) (pos? t-value))
+                  [ segment ]
+                  (if (< translated 0)
+                    (split-segment-do p axis p-value translated)
+                    (create-segment-with p axis translated (- t-value)))))))))
 
 (println "parsed" (parse-wire wire-text-1))
 (println "points" (wire-segments (parse-wire wire-text-1)))
