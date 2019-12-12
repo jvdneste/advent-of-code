@@ -19,4 +19,4 @@
 
 (defn total-needed-fuel [] (reduce + (needed-fuels module-masses)))
 
-(println "total fuel" (total-needed-fuel))
+;(println "total fuel" (total-needed-fuel))

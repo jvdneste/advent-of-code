@@ -42,6 +42,6 @@
     (filter #(let [[noun verb prog] %] (= result (first prog))))
     (first)))
 
-(println "result"
-         (let [[noun verb] (brute-force-find-noun-and-verb (program-values-from-text program-text) 19690720)]
-           [noun verb]))
+;(println "result"
+;         (let [[noun verb] (brute-force-find-noun-and-verb (program-values-from-text program-text) 19690720)]
+;           [noun verb]))
