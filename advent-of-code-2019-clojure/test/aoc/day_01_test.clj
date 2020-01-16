@@ -1,6 +1,6 @@
-(ns aoc-2019.day-01-test
+(ns aoc.day-01-test
   (:require [clojure.test :refer :all])
-  (:require [aoc-2019.day-01 :refer :all]))
+  (:require [aoc.day-01 :refer :all]))
 
 (deftest total-fuel-is-correct
   (testing "is total fuel correct"

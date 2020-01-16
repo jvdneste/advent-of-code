@@ -1,6 +1,6 @@
-(ns aoc-2019.day-02-test
+(ns aoc.day-02-test
   (:require [clojure.test :refer :all])
-  (:require [aoc-2019.day-02 :refer :all]))
+  (:require [aoc.day-02 :refer :all]))
 
 (deftest program-eval-at-position-tests
   (testing "program-eval-at-position basic tests"

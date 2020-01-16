@@ -1,4 +1,3 @@
-(ns aoc.core
-  (:require [aoc-2019.day-02 :refer :all]))
+(ns aoc.core)
 
 ;(println (program-eval program-values))
